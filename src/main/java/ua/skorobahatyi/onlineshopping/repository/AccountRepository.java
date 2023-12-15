@@ -1,4 +1,7 @@
 package ua.skorobahatyi.onlineshopping.repository;
 
-public class AccountRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import ua.skorobahatyi.onlineshopping.model.Account;
+
+public interface AccountRepository extends JpaRepository<Account,Integer> {
 }
