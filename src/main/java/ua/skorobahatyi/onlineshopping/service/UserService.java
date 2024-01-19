@@ -18,15 +18,16 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User getUser(Long id) {
+    public User getUser(Integer id) {
         //logger.debug("Get User with id {}", id);
-        Assert.notNull(id, "User id must not be null");
-        return userRepository.findById(id).orElseThrow(() -> new ChangeSetPersister.NotFoundException(String.format("Unknown user %s", id)));
+        //Assert.notNull(id, "User id must not be null");
+        //return userRepository.findById(id).orElseThrow(() -> new ChangeSetPersister.NotFoundException(String.format("Unknown user %s", id)));
+        return userRepository.findById(id).orElseThrow();
     }
 
     public User createUser(User user) {
         //logger.debug("Create User");
-        Assert.notNull(user, "User must not be null");
+       // Assert.notNull(user, "User must not be null");
         user = userRepository.save(user);
       //  logger.info("User with id {} has been saved on checkout db", user.getId());
 

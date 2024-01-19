@@ -1,6 +1,7 @@
 package ua.skorobahatyi.onlineshopping.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import java.time.LocalDate;
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 @Entity
 @Table (name="user")
 public class User {
+    @Id
     private int id;
     private String name;
     private String surname;
