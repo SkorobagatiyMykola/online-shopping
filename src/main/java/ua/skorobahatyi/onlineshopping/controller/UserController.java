@@ -30,7 +30,7 @@ public class UserController {
     @PostMapping()
     //@PostMapping(consumes = APPLICATION_JSON_VALUE)
     public ResponseEntity<HttpStatus> createUser(@RequestBody User userBody) {
-        logger.debug("POST /user");
+        logger.debug("===  POST /user ===");
         User user = userService.createUser(userBody);
 
         logger.info("User {} has been created.", user.getId());
