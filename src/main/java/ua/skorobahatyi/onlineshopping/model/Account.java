@@ -9,4 +9,9 @@ import jakarta.persistence.Table;
 public class Account {
     @Id
     private int userId;
+
+    private String name;
+
+    private String currency;
+    private Double amount;
 }
