@@ -15,7 +15,8 @@ import java.util.List;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-@RestController("/users")
+@RestController
+@RequestMapping(value = "/users")
 public class UserController {
     private static final Logger logger = LogManager.getLogger(UserController.class);
 
