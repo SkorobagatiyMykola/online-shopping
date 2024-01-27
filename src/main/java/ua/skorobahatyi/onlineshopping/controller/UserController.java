@@ -48,8 +48,16 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUser(@PathVariable Integer id) {
-        //logger.debug("GET /users/{}", id);
+        logger.debug("GET /users/{}", id);
         User user = userService.getUser(id);
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<User> deleteUser(@PathVariable Integer id) {
+        logger.debug("DELETE /users/{}", id);
+        User user = userService.deleteUserById(id);
 
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
