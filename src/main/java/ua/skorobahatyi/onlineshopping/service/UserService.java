@@ -38,6 +38,11 @@ public class UserService {
         //logger.debug("Get all Users ");
         return userRepository.findAll();
     }
+
+    public void deleteUserById(Integer id) {
+        userRepository.deleteById(id);
+
+    }
 //
 //    public User createUser(User userBody) {
 //    }
