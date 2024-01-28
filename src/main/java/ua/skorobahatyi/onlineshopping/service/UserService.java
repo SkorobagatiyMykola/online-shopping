@@ -43,6 +43,17 @@ public class UserService {
         userRepository.deleteById(id);
 
     }
+
+    public User updateUserById(Integer id, User user) {
+        User oldUser = getUser(id);
+
+//        oldUser.se
+//
+//        User newUser = getUser(id);
+//
+//        user = userRepository.save();
+        return user; // todo (!!!)
+    }
 //
 //    public User createUser(User userBody) {
 //    }
