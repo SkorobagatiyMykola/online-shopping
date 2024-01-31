@@ -1,7 +1,6 @@
 package ua.skorobahatyi.onlineshopping.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import ua.skorobahatyi.onlineshopping.model.User;
 import ua.skorobahatyi.onlineshopping.repository.UserRepository;
@@ -48,6 +47,8 @@ public class UserService {
         User oldUser = getUser(id);
 
         // todo add code (???)
+
+
 //        oldUser.se
 //
 //        User newUser = getUser(id);
