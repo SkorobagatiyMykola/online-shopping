@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import ua.skorobahatyi.onlineshopping.dto.UserDto;
 import ua.skorobahatyi.onlineshopping.model.User;
 import ua.skorobahatyi.onlineshopping.service.UserService;
 
@@ -55,9 +56,9 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Integer id, User user) {
-        logger.debug("GET /users/{}", id);
-        User newUser = userService.updateUserById(id, user);
+    public ResponseEntity<User> updateUser(@PathVariable Integer id,@RequestBody UserDto userDto) {
+        logger.debug("PUT /users/{}", id);
+        User user = userService.updateUserById(id, userDto);
 
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

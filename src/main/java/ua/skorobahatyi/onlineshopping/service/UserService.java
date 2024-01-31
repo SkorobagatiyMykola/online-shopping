@@ -1,7 +1,12 @@
 package ua.skorobahatyi.onlineshopping.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import ua.skorobahatyi.onlineshopping.dto.UserDto;
 import ua.skorobahatyi.onlineshopping.model.User;
 import ua.skorobahatyi.onlineshopping.repository.UserRepository;
 
@@ -9,12 +14,16 @@ import java.util.List;
 
 @Service
 public class UserService {
+    private static final Logger logger = LogManager.getLogger(UserService.class);
 
     private final UserRepository userRepository;
+    private final ModelMapper modelMapper;
+
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
     }
 
     public User getUser(Integer id) {
@@ -26,9 +35,9 @@ public class UserService {
 
     public User createUser(User user) {
         //logger.debug("Create User");
-       // Assert.notNull(user, "User must not be null");
+        // Assert.notNull(user, "User must not be null");
         user = userRepository.save(user);
-      //  logger.info("User with id {} has been saved on checkout db", user.getId());
+        //  logger.info("User with id {} has been saved on checkout db", user.getId());
 
         return user;
     }
@@ -43,26 +52,14 @@ public class UserService {
 
     }
 
-    public User updateUserById(Integer id, User user) {
-        User oldUser = getUser(id);
+    public User updateUserById(Integer id, UserDto userDto) {
+        logger.debug("Update User");
+        User user = getUser(id);
+        modelMapper.map(userDto, user);
 
-        // todo add code (???)
-
-
-//        oldUser.se
-//
-//        User newUser = getUser(id);
-//
-//        user = userRepository.save();
+        userRepository.updateUser(id, userDto.getName(), userDto.getSurname(), userDto.getAge());
+        logger.info("Updated user with id: {}", id);
         return user; // todo (!!!)
     }
-//
-//    public User createUser(User userBody) {
-//    }
-//
-//    public List<User> getUsers() {
-//    }
-//
-//    public User getUser(Long id) {
-//    }
+
 }
