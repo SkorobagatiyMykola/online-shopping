@@ -57,9 +57,9 @@ public class UserService {
         User user = getUser(id);
         modelMapper.map(userDto, user);
 
-        userRepository.updateUser(id, userDto.getName(), userDto.getSurname(), userDto.getAge());
+        User newUser= userRepository.updateUser(id, userDto.getName(), userDto.getSurname(), userDto.getAge());
         logger.info("Updated user with id: {}", id);
-        return user; // todo (!!!)
+        return newUser; // todo (!!!)
     }
 
 }
