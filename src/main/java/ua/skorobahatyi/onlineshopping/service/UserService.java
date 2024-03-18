@@ -54,12 +54,13 @@ public class UserService {
 
     public User updateUserById(Integer id, UserDto userDto) {
         logger.debug("Update User");
-        User user = getUser(id);
-        modelMapper.map(userDto, user);
 
-        User newUser= userRepository.updateUser(id, userDto.getName(), userDto.getSurname(), userDto.getAge());
+        //modelMapper.map(userDto, user);
+
+        userRepository.updateUser(id, userDto.getName(), userDto.getSurname(), userDto.getAge());
+        User user = getUser(id);
         logger.info("Updated user with id: {}", id);
-        return newUser; // todo (!!!)
+        return user; // todo (!!!)
     }
 
 }

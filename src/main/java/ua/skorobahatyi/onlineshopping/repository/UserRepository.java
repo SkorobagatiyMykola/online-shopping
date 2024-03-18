@@ -13,11 +13,10 @@ import ua.skorobahatyi.onlineshopping.model.User;
 public interface UserRepository extends JpaRepository<User,Integer> {
 
 
-    //@Modifying
-    @Modifying (clearAutomatically = true, flushAutomatically = true)
+    @Modifying ()
     @Transactional
     @Query("UPDATE User u SET u.name = :name, u.surname = :surname, u.age = :age WHERE u.id = :id")
-    User updateUser(@Param("id") Integer id,
+    void updateUser(@Param("id") Integer id,
                     @Param("name") String name,
                     @Param("surname") String surname,
                     @Param("age") Integer age);
